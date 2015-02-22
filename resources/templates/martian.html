@@ -11,17 +11,17 @@
         <form action="/martian" method="post">
             <div class="form-group">
                 <label for="ebnf_input">EBNF rules</label>
-                <textarea class="form-control" rows="10" id="form_rules" name="rules" placeholder="Write EBNF rules here">{% if rules %}{{rules}}{% else %}kanin{% endif %}</textarea>
+                <textarea class="form-control" rows="10" id="form_rules" name="rules" placeholder="Write EBNF rules here">{% if rules %}{{rules}}{% endif %}</textarea>
             </div>
             {% if result %}
             Parsed {{count}} entries:
             <div><hr/>
-                <table>
+                <table class="table table-striped">
                     {% for item in result %}
                     <tr>
-                        <td> {{item.status}} </td>
+                        <td class='{% ifequal item.status "success" %}bg-success{% else %}bg-danger{% endifequal %}'> {{item.status}} </td>
                         <td>
-                        <table>
+                        <table class="table">
                             <tr><td> {{item.entry}} </td></tr>
                             <tr><td><pre>{{item.result}}</pre></td></tr>
                         </table>
